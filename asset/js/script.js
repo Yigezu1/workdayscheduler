@@ -47,6 +47,21 @@ $( document ).ready(function() {
         hours = hours ? hours : 12;
         return hours + ampm;
     }
-formatAMPM();
+// formatAMPM();
+// update color code segment
+function updateColors(){
+    var currentTime = new Date().getHours();
+    for (var i = 9; i < 18; i++) { 
+        var elid = "#"+i;
+        var _id ="#text" + i;
+    console.log(currentTime, $(elid).data("time"));
+     if ($(elid).data("time") == currentTime){
+        $(_id).addClass( "present");
+    } else if (currentTime < $(elid).data("time")) {
+        $(_id).addClass( "future");
+    }
+}
+}
+updateColors();
 
 });
