@@ -2,9 +2,10 @@
 
 $( document ).ready(function() {
     function getLocalStorage(key) {
-        let value = localStorage.getItem(key);
+        var value = localStorage.getItem(key);
+        var elId = "#text"+key;
         if (value) {
-            $(`#text${key}`).text(value);
+            $(elId).text(value);
         }
     }
     $("#currentDay").text(moment().format("dddd, MMMM Do"));
@@ -66,4 +67,10 @@ setInterval(function() {
     updateColors();
 }, 1000);
 
+var saveBtn = $('.saveBtn');
+saveBtn.on('click', function(){
+    var eventId = $(this).attr('id');
+    var eventText = $(this).parent().siblings().children('.description').val();
+    localStorage.setItem(eventId, eventText);
+});
 });
