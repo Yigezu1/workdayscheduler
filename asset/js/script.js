@@ -62,6 +62,8 @@ function updateColors(){
     }
 }
 }
-updateColors();
+setInterval(function() {
+    updateColors();
+}, 1000);
 
 });
