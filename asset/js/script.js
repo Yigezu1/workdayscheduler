@@ -42,21 +42,20 @@ $(document).ready(function () {
 
     getLocalStorage(i);
   }
-
+// time formatting function
   function formatAMPM(hours) {
     var ampm = hours >= 12 ? "pm" : "am";
     hours = hours % 12;
     hours = hours ? hours : 12;
     return hours + ampm;
   }
-  formatAMPM();
+
   // update color code segment
   function updateColors() {
     var currentTime = new Date().getHours();
     for (var i = 9; i < 18; i++) {
       var elid = "#" + i;
-      var _id = "#text" + i;
-    //   console.log(currentTime, $(elid).data("time"));
+      var _id = "#text" + i;    
       if ($(elid).data("time") == currentTime) {
         $(_id).addClass("present");
       } else if (currentTime < $(elid).data("time")) {
@@ -64,11 +63,12 @@ $(document).ready(function () {
       }
     }
   }
-
+// Time interval
   setInterval(function () {
     updateColors();
   }, 1000);
 
+//   save button click event handler
   var saveBtn = $(".saveBtn");
   saveBtn.on("click", function () {
     var eventId = $(this).attr("id");
