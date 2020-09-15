@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  //Gets stored information from the local storage
   function getLocalStorage(key) {
     var value = localStorage.getItem(key);
     var elId = "#text" + key;
